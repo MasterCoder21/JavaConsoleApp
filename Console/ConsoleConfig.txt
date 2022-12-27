@@ -1,0 +1,7 @@
+# DO NOT MANUALLY EDIT THIS FILE!
+# DOING SO COULD RESULT IN LOSS OF DATA OR APPLICATION MALFUNCTION.
+ComputerNameColor:-16711936
+PathColor:-256
+StartingPath:C:\Users\455152
+DefaultConsoleTitle:~
+PluginPaths:["C:\Users\455152\eclipse\Console\Console\plugins";]

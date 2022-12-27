@@ -1,0 +1,7 @@
+# DO NOT MANUALLY EDIT THIS FILE!
+# DOING SO COULD RESULT IN LOSS OF DATA OR APPLICATION MALFUNCTION.
+ComputerNameColor:-16711936
+PathColor:-256
+StartingPath:C:\Users\Morga
+DefaultConsoleTitle:~
+PluginPaths:["D:\Code\Java Projects\Console\out\plugins";]

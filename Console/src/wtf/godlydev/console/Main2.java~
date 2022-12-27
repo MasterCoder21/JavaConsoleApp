@@ -1,0 +1,75 @@
+package wtf.godlydev.console;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
+
+import wtf.godlydev.console.console.ConsoleInput;
+
+public class Main2 extends JFrame {
+	public static void main(String[] args) {
+		try {
+            UIManager.put("Button.arc", 4);
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            // LOG.log(Level.CONFIG, "Could not set look and feel for the application", e);
+        }
+		
+		Console console = new Console();
+		console.init();
+		// Main2 launcher = new Main2();
+		// launcher.setVisible(true);
+		console.getFrame().setLocationRelativeTo(null);
+	}
+
+	private Main2() {
+		super();
+		setSize(600, 600);
+		// setResizable(false);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+}
+
+class Console {
+	final JFrame frame = new JFrame();
+
+	public Console() {
+		ConsoleInput textArea = new ConsoleInput(24, 80);
+		textArea.setLineWrap(true);
+		textArea.setBackground(Color.BLACK);
+		textArea.setForeground(Color.LIGHT_GRAY);
+		textArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+		System.setOut(new PrintStream(new OutputStream() {
+			@Override
+			public void write(int b) throws IOException {
+				textArea.append(String.valueOf((char) b));
+			}
+		}));
+		System.setErr(new PrintStream(new OutputStream() {
+			@Override
+			public void write(int b) throws IOException {
+				textArea.append(String.valueOf((char) b));
+			}
+		}));
+		JScrollPane scroll = new JScrollPane(textArea);
+
+		// Add Textarea in to middle panel
+		frame.add(scroll);
+	}
+
+	public void init() {
+		frame.pack();
+		frame.setVisible(true);
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+}
